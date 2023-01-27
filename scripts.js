@@ -1,5 +1,6 @@
 const gridContainer = document.getElementById('grid-container');
 const clearBtn = document.getElementById('clear-btn');
+const newGridSize = document.getElementById('new-grid-size');
 
 let rows = 16;
 let columns = 16;
@@ -39,3 +40,4 @@ clearBtn.addEventListener('click', () => {
         cell.classList.remove('color');
     })
 })
+

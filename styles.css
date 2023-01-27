@@ -1,0 +1,35 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#grid-container {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+.row {
+    display: flex;
+    /* border: 1px solid red; */
+}
+
+/* individual cells */
+.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+    border: 1px solid black;
+}
+
+/* Fills cells with content */
+.column::before {
+    content: '';
+    padding-top: 100%;
+}

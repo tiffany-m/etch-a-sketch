@@ -1,9 +1,8 @@
 const gridContainer = document.getElementById('grid-container');
+const clearBtn = document.getElementById('clear-btn');
 
 let rows = 16;
 let columns = 16;
-
-createGrid(rows, columns);
 
 function createGrid(numRows, numCols) {
 
@@ -25,10 +24,18 @@ function createGrid(numRows, numCols) {
     }
 }
 
+createGrid(rows, columns);
+
 const cells = document.querySelectorAll('.column');
 
 cells.forEach(cell => {
     cell.addEventListener('mouseover', () => {
         cell.classList.add('color');
+    })
+})
+
+clearBtn.addEventListener('click', () => {
+    cells.forEach(cell => {
+        cell.classList.remove('color');
     })
 })

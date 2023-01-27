@@ -33,3 +33,7 @@
     content: '';
     padding-top: 100%;
 }
+
+.color {
+    background-color: gray;
+}

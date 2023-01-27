@@ -3,6 +3,8 @@ const gridContainer = document.getElementById('grid-container');
 let rows = 16;
 let columns = 16;
 
+createGrid(rows, columns);
+
 function createGrid(numRows, numCols) {
 
     // create rows
@@ -23,4 +25,10 @@ function createGrid(numRows, numCols) {
     }
 }
 
-createGrid(rows, columns);
+const cells = document.querySelectorAll('.column');
+
+cells.forEach(cell => {
+    cell.addEventListener('mouseover', () => {
+        cell.classList.add('color');
+    })
+})

@@ -3,7 +3,9 @@ const clearBtn = document.getElementById('clear-btn');
 const gridSize = document.getElementById('grid-size');
 const increaseBtn = document.getElementById('increase-btn');
 const decreaseBtn = document.getElementById('decrease-btn');
+const colorPicked = document.getElementById('color-picker');
 
+let color = 'black';
 let size = 16;
 let rows = size;
 let columns = size;
@@ -43,7 +45,7 @@ const cells = document.querySelectorAll('.column');
 
 cells.forEach(cell => {
     cell.addEventListener('mouseover', () => {
-        cell.classList.add('color');
+        cell.style.backgroundColor = color;
     })
 })
 
@@ -70,3 +72,8 @@ clearBtn.addEventListener('click', () => {
         cell.classList.remove('color');
     })
 })
+
+colorPicked.addEventListener('change', (e) => {
+    (color = e.target.value)
+    console.log(e);
+});

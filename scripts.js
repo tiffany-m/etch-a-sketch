@@ -1,8 +1,12 @@
 const gridContainer = document.getElementById('grid-container');
 const clearBtn = document.getElementById('clear-btn');
+const gridSize = document.getElementById('grid-size');
+const increaseBtn = document.getElementById('increase-btn');
+const decreaseBtn = document.getElementById('decrease-btn');
 
-let rows = 16;
-let columns = 16;
+let size = 16;
+let rows = size;
+let columns = size;
 
 function createGrid(numRows, numCols) {
 
@@ -26,12 +30,39 @@ function createGrid(numRows, numCols) {
 
 createGrid(rows, columns);
 
+function updateSizeOnScreen() {
+    gridSize.innerText = size;
+}
+
+function newGrid(size1, size2) {
+    grid.remove();
+    createGrid(size, size);
+}
+
 const cells = document.querySelectorAll('.column');
 
 cells.forEach(cell => {
     cell.addEventListener('mouseover', () => {
         cell.classList.add('color');
     })
+})
+
+increaseBtn.addEventListener('click', ()=> {
+    size++ 
+
+    if(size > 64) size = 64;
+    
+    updateSizeOnScreen();
+    newGrid(size, size);
+})
+
+decreaseBtn.addEventListener('click', () => {
+    size--
+
+    if (size < 8) size = 8;
+
+    updateSizeOnScreen();
+    newGrid(size, size);
 })
 
 clearBtn.addEventListener('click', () => {

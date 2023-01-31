@@ -30,6 +30,7 @@ function createGrid(numRowsCols) {
 }
 
 createGrid(size);
+addColorToCells();
 
 function updateSizeOnScreen() {
     gridSize.innerText = size;
@@ -47,15 +48,19 @@ function newGrid(numRowsCols) {
     gridRemove(); 
     createGrid(numRowsCols); 
     gridContainer.appendChild(grid);
+    addColorToCells();
 }
 
-const cells = document.querySelectorAll('.column');
+function addColorToCells() {
+    const cells = document.querySelectorAll('.column');
 
-cells.forEach(cell => {
-    cell.addEventListener('mouseover', () => {
-        cell.style.backgroundColor = color;
+    cells.forEach(cell => {
+        cell.addEventListener('mouseover', () => {
+            cell.style.backgroundColor = color;
+        })
     })
-})
+}
+
 
 increaseBtn.addEventListener('click', ()=> {
     size++ 

@@ -1,13 +1,12 @@
 const gridContainer = document.getElementById('grid-container');
 const grid = document.getElementById('grid');
-const clearBtn = document.getElementById('clear-btn');
-const gridSize = document.getElementById('grid-size');
 const increaseBtn = document.getElementById('increase-btn');
 const decreaseBtn = document.getElementById('decrease-btn');
 const colorPicked = document.getElementById('color-picker');
-
-let color = 'black';
-let size = 16;
+const clearBtn = document.getElementById('clear-btn');
+const gridSizeText = document.getElementById('grid-size-text');
+let color = '#00C5CD';
+let size = 24;
 
 function createGrid(numRowsCols) {
 
@@ -16,11 +15,11 @@ function createGrid(numRowsCols) {
         let row = document.createElement('div');
         row.className = 'row';
 
-        // create columns/individual cells
+        // create columns/individual squares
         for (let j = 0; j < numRowsCols; j++) {
             let column = document.createElement('div');
             column.className = 'column';
-            // line to number cells
+            // line to number squares for debugging
             // column.textContent = i + '-' + j;
             row.appendChild(column);
         }
@@ -29,12 +28,13 @@ function createGrid(numRowsCols) {
     }
 }
 
+// create default grid and add proper eventListeners to squares
 createGrid(size);
-addColorToCells();
-addClearButtonFunction();
+addColorToSquares();
+clearGrid();
 
 function updateSizeOnScreen() {
-    gridSize.innerText = size;
+    gridSizeText.innerText = size;
 }
 
 function gridRemove() {
@@ -45,34 +45,33 @@ function gridRemove() {
     rows.forEach(row => row.remove());
 }
 
-function newGrid(numRowsCols) {
+function createNewGrid(numRowsCols) {
     gridRemove(); 
     createGrid(numRowsCols); 
     gridContainer.appendChild(grid);
-    addColorToCells();
-    addClearButtonFunction();
+    addColorToSquares();
+    clearGrid();
 }
 
-function addColorToCells() {
-    const cells = document.querySelectorAll('.column');
+function addColorToSquares() {
+    const squares = document.querySelectorAll('.column');
 
-    cells.forEach(cell => {
-        cell.addEventListener('mouseover', () => {
-            cell.style.backgroundColor = color;
+    squares.forEach(square => {
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = color;
         })
     })
 }
 
-function addClearButtonFunction() {
-    const cells = document.querySelectorAll('.column');
+function clearGrid() {
+    const squares = document.querySelectorAll('.column');
 
     clearBtn.addEventListener('click', () => {
-        cells.forEach(cell => {
-            cell.style.backgroundColor = 'white';
+        squares.forEach(square => {
+            square.style.backgroundColor = 'white';
         })
     })
 }
-
 
 increaseBtn.addEventListener('click', ()=> {
     size++ 
@@ -80,7 +79,7 @@ increaseBtn.addEventListener('click', ()=> {
     if(size > 64) size = 64;
     
     updateSizeOnScreen();
-    newGrid(size);
+    createNewGrid(size);
 })
 
 decreaseBtn.addEventListener('click', () => {
@@ -89,7 +88,7 @@ decreaseBtn.addEventListener('click', () => {
     if (size < 8) size = 8;
 
     updateSizeOnScreen();
-    newGrid(size, size);
+    createNewGrid(size, size);
 })
 
 colorPicked.addEventListener('change', (e) => {

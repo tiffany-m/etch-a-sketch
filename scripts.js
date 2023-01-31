@@ -1,4 +1,5 @@
 const gridContainer = document.getElementById('grid-container');
+const grid = document.getElementById('grid');
 const clearBtn = document.getElementById('clear-btn');
 const gridSize = document.getElementById('grid-size');
 const increaseBtn = document.getElementById('increase-btn');
@@ -26,7 +27,7 @@ function createGrid(numRows, numCols) {
             row.appendChild(column);
         }
 
-        gridContainer.appendChild(row);
+        grid.appendChild(row);
     }
 }
 
@@ -36,9 +37,18 @@ function updateSizeOnScreen() {
     gridSize.innerText = size;
 }
 
+function gridRemove() {
+    const rows = document.querySelectorAll('.row');
+    const cols = document.querySelectorAll('.column');
+
+    cols.forEach(col => col.remove());
+    rows.forEach(row => row.remove());
+}
+
 function newGrid(size1, size2) {
-    grid.remove();
-    createGrid(size, size);
+    gridRemove(); 
+    createGrid(size1, size2); 
+    gridContainer.appendChild(grid);
 }
 
 const cells = document.querySelectorAll('.column');
@@ -69,7 +79,8 @@ decreaseBtn.addEventListener('click', () => {
 
 clearBtn.addEventListener('click', () => {
     cells.forEach(cell => {
-        cell.classList.remove('color');
+        cell.style.backgroundColor = 'white';
+        console.log('clicked')
     })
 })
 

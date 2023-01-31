@@ -8,18 +8,16 @@ const colorPicked = document.getElementById('color-picker');
 
 let color = 'black';
 let size = 16;
-let rows = size;
-let columns = size;
 
-function createGrid(numRows, numCols) {
+function createGrid(numRowsCols) {
 
     // create rows
-    for (let i = 0; i < numRows; i++) {
+    for (let i = 0; i < numRowsCols; i++) {
         let row = document.createElement('div');
         row.className = 'row';
 
         // create columns/individual cells
-        for (let j = 0; j < numCols; j++) {
+        for (let j = 0; j < numRowsCols; j++) {
             let column = document.createElement('div');
             column.className = 'column';
             // line to number cells
@@ -31,7 +29,7 @@ function createGrid(numRows, numCols) {
     }
 }
 
-createGrid(rows, columns);
+createGrid(size);
 
 function updateSizeOnScreen() {
     gridSize.innerText = size;
@@ -45,9 +43,9 @@ function gridRemove() {
     rows.forEach(row => row.remove());
 }
 
-function newGrid(size1, size2) {
+function newGrid(numRowsCols) {
     gridRemove(); 
-    createGrid(size1, size2); 
+    createGrid(numRowsCols); 
     gridContainer.appendChild(grid);
 }
 
@@ -65,7 +63,7 @@ increaseBtn.addEventListener('click', ()=> {
     if(size > 64) size = 64;
     
     updateSizeOnScreen();
-    newGrid(size, size);
+    newGrid(size);
 })
 
 decreaseBtn.addEventListener('click', () => {

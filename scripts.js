@@ -31,6 +31,7 @@ function createGrid(numRowsCols) {
 
 createGrid(size);
 addColorToCells();
+addClearButtonFunction();
 
 function updateSizeOnScreen() {
     gridSize.innerText = size;
@@ -49,6 +50,7 @@ function newGrid(numRowsCols) {
     createGrid(numRowsCols); 
     gridContainer.appendChild(grid);
     addColorToCells();
+    addClearButtonFunction();
 }
 
 function addColorToCells() {
@@ -57,6 +59,16 @@ function addColorToCells() {
     cells.forEach(cell => {
         cell.addEventListener('mouseover', () => {
             cell.style.backgroundColor = color;
+        })
+    })
+}
+
+function addClearButtonFunction() {
+    const cells = document.querySelectorAll('.column');
+
+    clearBtn.addEventListener('click', () => {
+        cells.forEach(cell => {
+            cell.style.backgroundColor = 'white';
         })
     })
 }
@@ -80,11 +92,11 @@ decreaseBtn.addEventListener('click', () => {
     newGrid(size, size);
 })
 
-clearBtn.addEventListener('click', () => {
-    cells.forEach(cell => {
-        cell.style.backgroundColor = 'white';
-    })
-})
+// clearBtn.addEventListener('click', () => {
+//     cells.forEach(cell => {
+//         cell.style.backgroundColor = 'white';
+//     })
+// })
 
 colorPicked.addEventListener('change', (e) => {
     (color = e.target.value)

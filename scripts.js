@@ -83,7 +83,6 @@ decreaseBtn.addEventListener('click', () => {
 clearBtn.addEventListener('click', () => {
     cells.forEach(cell => {
         cell.style.backgroundColor = 'white';
-        console.log('clicked')
     })
 })
 

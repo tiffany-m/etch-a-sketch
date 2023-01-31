@@ -92,12 +92,6 @@ decreaseBtn.addEventListener('click', () => {
     newGrid(size, size);
 })
 
-// clearBtn.addEventListener('click', () => {
-//     cells.forEach(cell => {
-//         cell.style.backgroundColor = 'white';
-//     })
-// })
-
 colorPicked.addEventListener('change', (e) => {
     (color = e.target.value)
     console.log(e);

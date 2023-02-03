@@ -66,3 +66,17 @@ body {
 #clear-btn {
     margin-left: auto;
 }
+
+.btn {
+    background-color: #adafb1;
+    border: none;
+}
+
+.btn:active {
+    transform: scale(0.95);
+    outline: none;
+}
+
+.btn:hover {
+    background-color: #bcbec0;
+}

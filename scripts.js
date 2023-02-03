@@ -24,7 +24,7 @@ function createGrid(numRowsCols) {
             row.appendChild(column);
         }
 
-        grid.appendChild(row);
+        gridContainer.appendChild(row);
     }
 }
 
@@ -48,7 +48,6 @@ function gridRemove() {
 function createNewGrid(numRowsCols) {
     gridRemove(); 
     createGrid(numRowsCols); 
-    gridContainer.appendChild(grid);
     addColorToSquares();
     clearGrid();
 }
